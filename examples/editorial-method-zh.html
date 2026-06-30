@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>先有判断，再有页面</title>
+  <style>
+:root {
+  --paper: #f4f2ed;
+  --surface: #fbfaf6;
+  --ink: #101010;
+  --muted: #66635e;
+  --line: #d3d0c7;
+  --accent: #545f80;
+  --accent-2: #a06f58;
+  --haze: #d8dbea;
+  --max: 1120px;
+  --gutter: clamp(20px, 4vw, 48px);
+  --hairline: color-mix(in srgb, var(--ink) 9%, transparent);
+  --rule: color-mix(in srgb, var(--ink) 14%, transparent);
+  --soft-rule: color-mix(in srgb, var(--ink) 7%, transparent);
+  --reader-ink: color-mix(in srgb, var(--ink) 84%, var(--muted));
+  --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --display: "Avenir Next", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+  --serif: "Songti SC", "STSong", Georgia, "Times New Roman", SimSun, serif;
+}
+* { box-sizing: border-box; margin: 0; }
+body {
+  color: var(--ink);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--paper) 96%, #fff), var(--paper));
+  font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  overflow-wrap: break-word;
+}
+a {
+  color: color-mix(in srgb, var(--accent) 82%, var(--ink));
+  text-decoration-thickness: 1px;
+  text-decoration-color: color-mix(in srgb, var(--accent) 42%, transparent);
+  text-underline-offset: .18em;
+}
+a:hover { color: color-mix(in srgb, var(--ink) 94%, var(--accent)); text-decoration-color: currentColor; }
+.page {
+  width: min(var(--max), calc(100vw - 24px));
+  margin: 28px auto;
+  background: linear-gradient(180deg, var(--surface), var(--paper) 18rem);
+  box-shadow: 0 22px 70px rgba(20,22,24,.08), inset 0 0 0 1px rgba(255,255,255,.48);
+  overflow: hidden;
+}
+.hero, .report-section, .report-figure, .closing { padding-left: var(--gutter); padding-right: var(--gutter); }
+.hero {
+  min-height: 580px;
+  padding-top: 28px;
+  padding-bottom: 34px;
+  display: grid;
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+  grid-template-rows: auto 1fr auto;
+  gap: 22px;
+  border-bottom: 1px solid var(--soft-rule);
+}
+.brand-row {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  padding-bottom: 16px;
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.hero-main {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+  gap: clamp(28px, 4vw, 52px);
+  padding-top: clamp(28px, 5vw, 64px);
+  align-self: start;
+}
+h1 {
+  grid-column: 1 / 7;
+  font-family: var(--display);
+  font-size: clamp(48px, 5vw, 64px);
+  line-height: 1.06;
+  font-weight: 720;
+  letter-spacing: 0;
+  color: color-mix(in srgb, var(--ink) 94%, var(--accent));
+  text-wrap: balance;
+  word-break: keep-all;
+  overflow-wrap: normal;
+}
+.hero-deck { grid-column: 7 / 11; display: grid; gap: 16px; align-content: start; padding-top: 4px; }
+.subtitle { font-size: 24px; line-height: 1.34; color: var(--reader-ink); overflow-wrap: anywhere; text-wrap: balance; }
+.lead { font-family: var(--serif); font-size: 17px; line-height: 1.78; color: var(--muted); overflow-wrap: anywhere; text-wrap: pretty; }
+.thesis { padding-top: 4px; font-size: 14px; line-height: 1.68; color: var(--reader-ink); overflow-wrap: anywhere; }
+.thesis span { display: block; margin-bottom: 6px; font-family: var(--mono); font-size: 9px; color: var(--accent); text-transform: uppercase; }
+.hero-findings {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: .88fr repeat(3, minmax(0, 1fr));
+  gap: clamp(18px, 2.4vw, 34px);
+  margin-top: clamp(20px, 4vw, 52px);
+  padding-top: 18px;
+  align-self: end;
+  border-top: 1px solid var(--soft-rule);
+}
+.hero-findings > p, .hero-finding { padding: 4px 0 10px; }
+.hero-findings > p { font-family: var(--mono); font-size: 10px; color: var(--accent); text-transform: uppercase; }
+.hero-finding span { display: block; margin-bottom: 10px; font-family: var(--mono); font-size: 11px; color: var(--accent); }
+.hero-finding strong { display: block; font-size: 14px; line-height: 1.36; font-weight: 680; text-wrap: balance; }
+.report-section, .report-figure {
+  display: grid;
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+  gap: 22px;
+  padding-top: 62px;
+  padding-bottom: 62px;
+  border-top: 1px solid var(--soft-rule);
+}
+.section-kicker { grid-column: 1 / 3; font-family: var(--mono); font-size: 10px; color: var(--accent); text-transform: uppercase; padding-top: 8px; }
+.section-body { grid-column: 3 / 9; }
+.section-body h2 { margin-bottom: 18px; font-family: var(--display); font-size: clamp(30px, 3.8vw, 42px); line-height: 1.18; font-weight: 720; }
+.section-lede { margin-bottom: 14px; font-size: 19px; line-height: 1.62; color: var(--muted); }
+.section-body p { margin-bottom: 16px; font-family: var(--serif); font-size: 17px; line-height: 1.9; color: var(--reader-ink); overflow-wrap: anywhere; }
+.evidence-margin { grid-column: 9 / 11; display: grid; gap: 14px; align-content: start; }
+.evidence-note,
+.side-note {
+  padding: 13px 0 14px 14px;
+  border-left: 2px solid color-mix(in srgb, var(--accent) 86%, var(--ink));
+  border-top: 1px solid var(--hairline);
+  border-bottom: 1px solid var(--hairline);
+  font-family: var(--sans);
+  font-size: 12px;
+  line-height: 1.68;
+  color: var(--muted);
+  background: linear-gradient(90deg, color-mix(in srgb, var(--haze) 28%, transparent), transparent 72%), color-mix(in srgb, var(--surface) 62%, transparent);
+}
+.evidence-note strong,
+.side-note strong { display: block; margin-bottom: 7px; font-family: var(--mono); font-size: 10px; line-height: 1.25; text-transform: uppercase; color: var(--accent); }
+.evidence-note p,
+.side-note p { margin: 0 0 8px; font-family: var(--sans); font-size: 12px; line-height: 1.68; }
+.evidence-note p:last-child,
+.side-note p:last-child { margin-bottom: 0; }
+.point-list { list-style: none; display: grid; gap: 10px; }
+.point-list li { display: grid; grid-template-columns: 32px 1fr; gap: 10px; padding-top: 10px; border-top: 1px solid var(--soft-rule); }
+.point-list span { font-family: var(--mono); color: var(--accent); font-size: 10px; }
+.point-list p { margin: 0; font-size: 13px; line-height: 1.62; color: var(--muted); }
+.report-figure { background: color-mix(in srgb, var(--haze) 18%, transparent); }
+.report-figure figcaption { grid-column: 1 / 3; }
+.report-figure figcaption span { font-family: var(--mono); font-size: 9px; color: var(--accent); text-transform: uppercase; }
+.report-figure figcaption strong { display: block; margin-top: 12px; font-size: 23px; line-height: 1.18; }
+.report-figure figcaption p { margin-top: 10px; font-size: 13px; line-height: 1.6; color: var(--muted); }
+.figure-body { grid-column: 3 / 11; }
+.flow-diagram { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); border-top: 1px solid var(--soft-rule); border-bottom: 1px solid var(--soft-rule); }
+.flow-node { min-height: 118px; padding: 16px 14px; display: grid; align-content: space-between; border-right: 1px solid var(--soft-rule); background: color-mix(in srgb, var(--surface) 84%, transparent); }
+.flow-node:last-child { border-right: 0; }
+.flow-node span { font-family: var(--mono); font-size: 10px; color: var(--accent); }
+.flow-node strong { font-size: 15px; line-height: 1.36; }
+.matrix-wrap {
+  overflow-x: auto;
+  border-top: 2px solid color-mix(in srgb, var(--accent) 72%, var(--ink));
+  border-bottom: 1px solid var(--hairline);
+  background: color-mix(in srgb, var(--surface) 72%, transparent);
+}
+.matrix-wrap table { width: 100%; min-width: 680px; border-collapse: collapse; }
+.matrix-wrap th, .matrix-wrap td { padding: 15px 18px; border-bottom: 1px solid var(--hairline); text-align: left; vertical-align: top; font-size: 13px; line-height: 1.65; color: color-mix(in srgb, var(--ink) 78%, var(--muted)); }
+.matrix-wrap thead th { font-family: var(--mono); font-size: 9px; line-height: 1.3; text-transform: uppercase; color: var(--accent); background: color-mix(in srgb, var(--haze) 18%, var(--surface)); }
+.matrix-wrap tbody th { width: 22%; font-size: 15px; line-height: 1.42; font-weight: 680; color: color-mix(in srgb, var(--ink) 94%, var(--accent)); }
+.matrix-wrap tr:last-child th, .matrix-wrap tr:last-child td { border-bottom: 0; }
+.closing { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; padding-top: 42px; padding-bottom: 52px; }
+.closing-list { padding-top: 0; }
+.closing-list h3 { font-family: var(--mono); font-size: 10px; text-transform: uppercase; color: var(--muted); }
+.closing-list ul { margin: 12px 0 0; padding-left: 16px; font-size: 13px; line-height: 1.7; color: var(--reader-ink); }
+footer { width: min(var(--max), calc(100vw - 24px)); margin: 0 auto 28px; padding-top: 14px; border-top: 1px solid var(--soft-rule); display: flex; justify-content: space-between; font-family: var(--mono); font-size: 10px; text-transform: uppercase; color: var(--muted); }
+@media (max-width: 760px) {
+  html, body { width: 100%; max-width: 100vw; overflow-x: hidden; }
+  .page { width: 100%; max-width: 100vw; margin: 0; }
+  .hero, .report-section, .report-figure, .closing { padding-left: 20px; padding-right: 20px; }
+  .hero, .report-section, .report-figure, .closing, .hero-main { grid-template-columns: 1fr; }
+  h1, .hero-deck, .section-kicker, .section-body, .evidence-margin, .report-figure figcaption, .figure-body { grid-column: 1 / -1; }
+  .hero-main, .hero-deck, .hero-findings, .section-body, .evidence-margin, .figure-body { width: 100%; max-width: calc(100vw - 40px); }
+  .hero { min-height: auto; }
+  .hero-findings, .closing, .flow-diagram { grid-template-columns: 1fr; }
+  .flow-node { border-right: 0; border-bottom: 1px solid var(--soft-rule); }
+  .matrix-wrap th, .matrix-wrap td { padding: 12px 14px; }
+  h1 { font-size: 38px; line-height: 1.12; }
+  .subtitle { font-size: 21px; line-height: 1.42; }
+  footer { width: 100vw; padding-left: 18px; padding-right: 18px; }
+}
+@media (max-width: 430px) {
+  .hero-main, .hero-deck, .hero-findings, .section-body, .evidence-margin, .figure-body { max-width: 320px; }
+  h1 { font-size: 34px; line-height: 1.12; }
+}
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <div class="brand-row">
+        <span>Iris / 分析报告</span>
+        <span>中文示例</span>
+      </div>
+      <div class="hero-main">
+        <h1>先有判断，<br>再有页面</h1>
+        <div class="hero-deck">
+          <p class="subtitle">Iris 把分析、笔记和判断整理成可以自然阅读的单页报告。</p>
+          <p class="lead">很多 AI 输出并不缺信息，缺的是顺序、取舍和可信的语气。Iris 要做的不是把材料装饰得更漂亮，而是把核心判断、证据路径和仍需澄清的地方放到读者眼前。</p>
+          <p class="thesis"><span>主旨</span>好的 Iris 报告应该像一篇被认真编辑过的分析文章，而不是一份换了样式的模型转录。</p>
+        </div>
+      </div>
+      <div class="hero-findings">
+        <p>关键发现</p>
+        <div class="hero-finding"><span>01</span><strong>报告先回答读者需要判断什么。</strong></div>
+        <div class="hero-finding"><span>02</span><strong>不确定性应该被说清楚，而不是被语气抹平。</strong></div>
+        <div class="hero-finding"><span>03</span><strong>图解只在关系复杂时出现。</strong></div>
+      </div>
+    </section>
+
+    <section class="report-section">
+      <div class="section-kicker">01 / 材料</div>
+      <div class="section-body">
+        <h2>输入材料不是最终结构。</h2>
+        <p class="section-lede">代码库阅读、文章摘要、需求评价、时事拆解和个人思考，都可能从很散的材料开始。</p>
+        <p>智能体的第一步不是套模板，而是判断这些材料真正想帮助读者理解什么。一个藏在末尾的结论，可以成为开篇主旨；一组散落的风险，可以整理成假设和待决问题；一段复杂流程，可以变成图解。</p>
+        <p>页面的任务是让读者更快进入判断，而不是保留原始材料的所有痕迹。该删的噪音要删，该承认的不确定性要承认。</p>
+      </div>
+      <aside class="evidence-margin">
+        <div class="evidence-note">
+          <strong>证据说明</strong>
+          <p>中文报告里的标题、标签和收尾栏目也要使用中文。外部链接，例如 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/a" target="_blank" rel="noopener noreferrer">HTML 链接说明</a>，应在报告外打开。</p>
+        </div>
+        <div class="side-note">
+          <strong>旁注</strong>
+          <p>边栏注释用于限定证据和解释语境，它应该像正文的一部分，而不是临时贴上的卡片。</p>
+        </div>
+      </aside>
+    </section>
+
+    <figure class="report-figure">
+      <figcaption>
+        <span>流程 / 01</span>
+        <strong>从材料到报告</strong>
+        <p>先提炼判断，再进入页面表达。</p>
+      </figcaption>
+      <div class="figure-body">
+        <div class="flow-diagram">
+          <div class="flow-node"><span>01</span><strong>读取材料</strong></div>
+          <div class="flow-node"><span>02</span><strong>提取信号</strong></div>
+          <div class="flow-node"><span>03</span><strong>确认主旨</strong></div>
+          <div class="flow-node"><span>04</span><strong>组织证据</strong></div>
+          <div class="flow-node"><span>05</span><strong>交付 HTML</strong></div>
+        </div>
+      </div>
+    </figure>
+
+    <figure class="report-figure">
+      <figcaption>
+        <span>矩阵 / 01</span>
+        <strong>证据元素共享同一套系统</strong>
+        <p>来源说明、边栏注释和矩阵表格都使用低对比、细线条和清晰标签。</p>
+      </figcaption>
+      <div class="figure-body">
+        <div class="matrix-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>元素</th>
+                <th>适合用途</th>
+                <th>视觉规则</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>证据说明</th>
+                <td>来源记录、限制条件、可信度说明或可核验事实。</td>
+                <td>强调线、淡墨文字、紧凑标签。</td>
+              </tr>
+              <tr>
+                <th>边栏注释</th>
+                <td>解释性旁注、短引用或“为什么重要”的补充。</td>
+                <td>细线、正文质感、避免厚重卡片。</td>
+              </tr>
+              <tr>
+                <th>矩阵表格</th>
+                <td>比较主张、风险、决策或结构层级。</td>
+                <td>顶部规则线、短表头、单元格顶端对齐。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </figure>
+
+    <section class="closing">
+      <div class="closing-list">
+        <h3>前提</h3>
+        <ul><li>智能体已经读过来源材料。</li><li>报告用于帮助人做判断。</li></ul>
+      </div>
+      <div class="closing-list">
+        <h3>避开的误区</h3>
+        <ul><li>不要用套话填充页面。</li><li>不要把猜测写成事实。</li></ul>
+      </div>
+      <div class="closing-list">
+        <h3>下一步</h3>
+        <ul><li>直接编写最终 HTML 报告。</li><li>检查桌面和移动端阅读效果。</li></ul>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <span>Iris 生成报告</span>
+    <span>editorial-method-zh</span>
+  </footer>
+  <script>
+    document.querySelectorAll('a[href]').forEach(function(link) {
+      var href = link.getAttribute('href');
+      if (!href || href.charAt(0) === '#') return;
+      link.setAttribute('target', '_blank');
+      link.setAttribute('rel', 'noopener noreferrer');
+    });
+  </script>
+</body>
+</html>

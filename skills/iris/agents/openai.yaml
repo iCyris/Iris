@@ -1,0 +1,9 @@
+interface:
+  display_name: "Iris"
+  short_description: "Turn AI analysis into editorial reports."
+  icon_small: "./assets/iris-mark-white.png"
+  icon_large: "./assets/iris-mark-white.png"
+  brand_color: "#6F80C7"
+  default_prompt: "Use $iris to turn this AI analysis into a polished editorial reading report."
+policy:
+  allow_implicit_invocation: true

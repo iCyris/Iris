@@ -1,0 +1,78 @@
+{
+  "project": {
+    "name": "Iris",
+    "slug": "iris",
+    "description": "AI analysis report layer for editorial HTML artifacts."
+  },
+  "inputs": [
+    {
+      "path": "source material supplied by the user",
+      "role": "AI analysis, notes, research, codebase findings, screenshots, requirements, or prose that the agent edits into a report."
+    }
+  ],
+  "outputs": [
+    {
+      "path": "skills/iris/SKILL.md",
+      "producer": "skill-creator",
+      "role": "Canonical Iris report instructions."
+    },
+    {
+      "path": "skills/iris/templates/report.html",
+      "producer": "iris",
+      "role": "Canonical AI analysis report template."
+    },
+    {
+      "path": "skills/iris/references/content-method.md",
+      "producer": "iris",
+      "role": "Editorial extraction and writing method for turning source material into an HTML report."
+    },
+    {
+      "path": "BRAND.md",
+      "producer": "convallaria-concept",
+      "role": "Iris positioning, voice, visual territory, and anti-patterns."
+    },
+    {
+      "path": "LOGO_SPEC.md",
+      "producer": "convallaria-logo",
+      "role": "Current logo asset usage and misuse guidance."
+    },
+    {
+      "path": "assets/logo/generated/iris-mark-transparent.png",
+      "producer": "convallaria-logo",
+      "role": "Primary transparent raster logo mark for README and rendered HTML."
+    },
+    {
+      "path": "assets/logo/generated/iris-mark-white.png",
+      "producer": "convallaria-logo",
+      "role": "White logo mark for plugin surfaces."
+    },
+    {
+      "path": "examples/*.html",
+      "producer": "iris",
+      "role": "Hand-authored final HTML report examples."
+    },
+    {
+      "path": "assets/readme/*.png",
+      "producer": "iris",
+      "role": "README preview screenshots captured from final HTML examples."
+    },
+    {
+      "path": "final HTML report artifacts",
+      "producer": "iris",
+      "role": "Self-contained reports saved wherever the user request or local project context expects them."
+    }
+  ],
+  "assumptions": [
+    "Iris should stay portable across AI coding products.",
+    "Generated HTML should not require network access.",
+    "Iris is a report layer for AI analysis, not a general document suite."
+  ],
+  "quality_checks": [
+    "Check that skills/iris/templates/report.html contains the required slots.",
+    "Open at least one final HTML report at desktop and mobile widths."
+  ],
+  "next_actions": [
+    "Add screenshot QA for generated reports when a browser runner is available.",
+    "Keep examples focused on AI analysis, research, codebase readings, and decision reports."
+  ]
+}

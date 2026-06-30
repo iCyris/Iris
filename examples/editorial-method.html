@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Report Before Decoration</title>
+  <style>
+:root {
+  --paper: #f4f2ed;
+  --surface: #fbfaf6;
+  --ink: #101010;
+  --muted: #66635e;
+  --line: #d3d0c7;
+  --accent: #545f80;
+  --accent-2: #a06f58;
+  --haze: #d8dbea;
+  --max: 1120px;
+  --gutter: clamp(20px, 4vw, 48px);
+  --hairline: color-mix(in srgb, var(--ink) 9%, transparent);
+  --rule: color-mix(in srgb, var(--ink) 14%, transparent);
+  --soft-rule: color-mix(in srgb, var(--ink) 7%, transparent);
+  --reader-ink: color-mix(in srgb, var(--ink) 84%, var(--muted));
+  --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --display: "Avenir Next", "Helvetica Neue", Arial, "PingFang SC", sans-serif;
+  --serif: Georgia, "Times New Roman", "Songti SC", serif;
+}
+* { box-sizing: border-box; margin: 0; }
+body {
+  color: var(--ink);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--paper) 96%, #fff), var(--paper));
+  font-family: "Helvetica Neue", Arial, "PingFang SC", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  overflow-wrap: break-word;
+}
+a {
+  color: color-mix(in srgb, var(--accent) 82%, var(--ink));
+  text-decoration-thickness: 1px;
+  text-decoration-color: color-mix(in srgb, var(--accent) 42%, transparent);
+  text-underline-offset: .18em;
+}
+a:hover { color: color-mix(in srgb, var(--ink) 94%, var(--accent)); text-decoration-color: currentColor; }
+.page {
+  width: min(var(--max), calc(100vw - 24px));
+  margin: 28px auto;
+  background: linear-gradient(180deg, var(--surface), var(--paper) 18rem);
+  box-shadow: 0 22px 70px rgba(20,22,24,.08), inset 0 0 0 1px rgba(255,255,255,.48);
+  overflow: hidden;
+}
+.hero, .report-section, .report-figure, .closing { padding-left: var(--gutter); padding-right: var(--gutter); }
+.hero {
+  min-height: 580px;
+  padding-top: 28px;
+  padding-bottom: 34px;
+  display: grid;
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+  grid-template-rows: auto 1fr auto;
+  gap: 22px;
+  border-bottom: 1px solid var(--soft-rule);
+}
+.brand-row {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  padding-bottom: 16px;
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.hero-main {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+  gap: clamp(28px, 4vw, 52px);
+  padding-top: clamp(28px, 5vw, 64px);
+  align-self: start;
+}
+h1 {
+  grid-column: 1 / 7;
+  font-family: var(--display);
+  font-size: clamp(48px, 5.8vw, 72px);
+  line-height: .96;
+  letter-spacing: 0;
+  color: color-mix(in srgb, var(--ink) 94%, var(--accent));
+}
+.hero-deck { grid-column: 7 / 11; display: grid; gap: 15px; align-content: start; padding-top: 4px; }
+.subtitle { font-size: 27px; line-height: 1.16; color: var(--reader-ink); overflow-wrap: anywhere; }
+.lead { font-family: var(--serif); font-size: 16px; line-height: 1.68; color: var(--muted); overflow-wrap: anywhere; }
+.thesis { padding-top: 2px; font-size: 13px; line-height: 1.55; color: var(--reader-ink); overflow-wrap: anywhere; }
+.thesis span { display: block; margin-bottom: 6px; font-family: var(--mono); font-size: 9px; color: var(--accent); text-transform: uppercase; }
+.hero-findings {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: .88fr repeat(3, minmax(0, 1fr));
+  gap: clamp(18px, 2.4vw, 34px);
+  margin-top: clamp(20px, 4vw, 52px);
+  padding-top: 18px;
+  align-self: end;
+  border-top: 1px solid var(--soft-rule);
+}
+.hero-findings > p, .hero-finding { padding: 4px 12px 10px; }
+.hero-findings > p { padding-left: 0; font-family: var(--mono); font-size: 10px; color: var(--accent); text-transform: uppercase; }
+.hero-finding { padding-left: 0; padding-right: 0; }
+.hero-finding span { display: block; margin-bottom: 10px; font-family: var(--mono); font-size: 11px; color: var(--accent); }
+.hero-finding strong { display: block; font-size: 14px; line-height: 1.22; }
+.report-section, .report-figure {
+  display: grid;
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+  gap: 22px;
+  padding-top: 62px;
+  padding-bottom: 62px;
+  border-top: 1px solid var(--soft-rule);
+}
+.section-kicker { grid-column: 1 / 3; font-family: var(--mono); font-size: 10px; color: var(--accent); text-transform: uppercase; padding-top: 8px; }
+.section-body { grid-column: 3 / 9; }
+.section-body h2 { margin-bottom: 18px; font-family: var(--display); font-size: clamp(30px, 4vw, 42px); line-height: 1.02; }
+.section-lede { margin-bottom: 14px; font-size: 19px; line-height: 1.45; color: var(--muted); }
+.section-body p { margin-bottom: 16px; font-family: var(--serif); font-size: 17px; line-height: 1.75; color: var(--reader-ink); overflow-wrap: anywhere; }
+.evidence-margin { grid-column: 9 / 11; display: grid; gap: 14px; align-content: start; }
+.evidence-note,
+.side-note {
+  padding: 13px 0 14px 14px;
+  border-left: 2px solid color-mix(in srgb, var(--accent) 86%, var(--ink));
+  border-top: 1px solid var(--hairline);
+  border-bottom: 1px solid var(--hairline);
+  font-family: var(--sans);
+  font-size: 12px;
+  line-height: 1.58;
+  color: var(--muted);
+  background: linear-gradient(90deg, color-mix(in srgb, var(--haze) 28%, transparent), transparent 72%), color-mix(in srgb, var(--surface) 62%, transparent);
+}
+.evidence-note strong,
+.side-note strong { display: block; margin-bottom: 7px; font-family: var(--mono); font-size: 10px; line-height: 1.25; text-transform: uppercase; color: var(--accent); }
+.evidence-note p,
+.side-note p { margin: 0 0 8px; font-family: var(--sans); font-size: 12px; line-height: 1.58; }
+.evidence-note p:last-child,
+.side-note p:last-child { margin-bottom: 0; }
+.point-list { list-style: none; display: grid; gap: 10px; }
+.point-list li { display: grid; grid-template-columns: 32px 1fr; gap: 10px; padding-top: 10px; border-top: 1px solid var(--soft-rule); }
+.point-list span { font-family: var(--mono); color: var(--accent); font-size: 10px; }
+.point-list p { margin: 0; font-size: 12px; line-height: 1.45; color: var(--muted); }
+.report-figure { background: color-mix(in srgb, var(--haze) 22%, transparent); }
+.report-figure figcaption { grid-column: 1 / 3; }
+.report-figure figcaption span { font-family: var(--mono); font-size: 9px; color: var(--accent); text-transform: uppercase; }
+.report-figure figcaption strong { display: block; margin-top: 12px; font-size: 24px; line-height: 1.08; }
+.report-figure figcaption p { margin-top: 10px; font-size: 13px; line-height: 1.5; color: var(--muted); }
+.figure-body { grid-column: 3 / 11; }
+.flow-diagram { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); border-top: 2px solid var(--ink); border-bottom: 1px solid var(--hairline); }
+.flow-node { min-height: 118px; padding: 16px 14px; display: grid; align-content: space-between; border-right: 1px solid var(--hairline); background: var(--surface); }
+.flow-node:last-child { border-right: 0; }
+.flow-node span { font-family: var(--mono); font-size: 10px; color: var(--accent); }
+.flow-node strong { font-size: 15px; line-height: 1.2; }
+.matrix-wrap {
+  overflow-x: auto;
+  border-top: 2px solid color-mix(in srgb, var(--accent) 72%, var(--ink));
+  border-bottom: 1px solid var(--hairline);
+  background: color-mix(in srgb, var(--surface) 72%, transparent);
+}
+.matrix-wrap table { width: 100%; min-width: 680px; border-collapse: collapse; }
+.matrix-wrap th, .matrix-wrap td { padding: 15px 18px; border-bottom: 1px solid var(--hairline); text-align: left; vertical-align: top; font-size: 13px; line-height: 1.5; color: color-mix(in srgb, var(--ink) 78%, var(--muted)); }
+.matrix-wrap thead th { font-family: var(--mono); font-size: 9px; line-height: 1.3; text-transform: uppercase; color: var(--accent); background: color-mix(in srgb, var(--haze) 18%, var(--surface)); }
+.matrix-wrap tbody th { width: 22%; font-size: 15px; line-height: 1.3; font-weight: 680; color: color-mix(in srgb, var(--ink) 94%, var(--accent)); }
+.matrix-wrap tr:last-child th, .matrix-wrap tr:last-child td { border-bottom: 0; }
+.closing { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; padding-top: 42px; padding-bottom: 52px; }
+.closing-list { padding-top: 0; }
+.closing-list h3 { font-family: var(--mono); font-size: 10px; text-transform: uppercase; color: var(--muted); }
+.closing-list ul { margin: 12px 0 0; padding-left: 16px; font-size: 13px; line-height: 1.5; color: var(--reader-ink); }
+footer { width: min(var(--max), calc(100vw - 24px)); margin: 0 auto 28px; padding-top: 14px; border-top: 1px solid var(--hairline); display: flex; justify-content: space-between; font-family: var(--mono); font-size: 10px; text-transform: uppercase; color: var(--muted); }
+@media (max-width: 760px) {
+  html, body { width: 100%; max-width: 100vw; overflow-x: hidden; }
+  .page { width: 100%; max-width: 100vw; margin: 0; }
+  .hero, .report-section, .report-figure, .closing { padding-left: 20px; padding-right: 20px; }
+  .hero, .report-section, .report-figure, .closing, .hero-main { grid-template-columns: 1fr; }
+  h1, .hero-deck, .section-kicker, .section-body, .evidence-margin, .report-figure figcaption, .figure-body { grid-column: 1 / -1; }
+  .hero-main, .hero-deck, .section-body, .evidence-margin, .figure-body { width: 100%; max-width: calc(100vw - 40px); }
+  .hero { min-height: auto; }
+  .hero-findings, .closing, .flow-diagram { grid-template-columns: 1fr; }
+  .hero-finding { border-left: 0; border-top: 1px solid var(--hairline); padding-left: 0; }
+  .flow-node { border-right: 0; border-bottom: 1px solid var(--hairline); }
+  .matrix-wrap th, .matrix-wrap td { padding: 12px 14px; }
+  footer { width: 100vw; padding-left: 18px; padding-right: 18px; }
+}
+@media (max-width: 760px) {
+  .hero-main, .hero-deck, .hero-findings, .section-body, .evidence-margin, .figure-body { max-width: 320px; }
+  h1 { font-size: 42px; line-height: 1.03; }
+  .subtitle { font-size: 22px; line-height: 1.28; }
+}
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <div class="brand-row">
+        <span>Iris / analysis report</span>
+        <span>example</span>
+      </div>
+      <div class="hero-main">
+        <h1>Report Before Decoration</h1>
+        <div class="hero-deck">
+          <p class="subtitle">Iris should turn thinking into a reading path before it turns anything into a page.</p>
+          <p class="lead">AI output often arrives as a useful but shapeless transcript. Iris should extract the argument, name the evidence path, and make the remaining uncertainty visible enough for a human reader to trust the page.</p>
+          <p class="thesis"><span>Thesis</span>A strong Iris report is an edited judgment with evidence, not a decorated dump of model output.</p>
+        </div>
+      </div>
+      <div class="hero-findings">
+        <p>Key findings</p>
+        <div class="hero-finding"><span>01</span><strong>The report starts with a judgment, not a transcript.</strong></div>
+        <div class="hero-finding"><span>02</span><strong>Draft notes are private working material, not the final surface.</strong></div>
+        <div class="hero-finding"><span>03</span><strong>Figures appear only when they clarify a relationship.</strong></div>
+      </div>
+    </section>
+
+    <section class="report-section">
+      <div class="section-kicker">01 / Material</div>
+      <div class="section-body">
+        <h2>The source is material, not the final structure.</h2>
+        <p class="section-lede">Useful inputs can be messy: codebase notes, product critique, research excerpts, event timelines, rough thinking, or a requirements draft.</p>
+        <p>The agent's first job is to decide what the material is trying to help the reader understand. A late conclusion can become the opening thesis. A scattered set of caveats can become the assumptions section. A long list can become one diagram if the relationship matters more than the wording.</p>
+        <p>The report should preserve meaning without preserving clutter. It should separate observation from inference and make uncertainty explicit instead of smoothing it away.</p>
+      </div>
+      <aside class="evidence-margin">
+        <div class="evidence-note">
+          <strong>Evidence note</strong>
+          <p>Labels, source notes, and citations should use the report language. External references such as <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a" target="_blank" rel="noopener noreferrer">HTML anchor guidance</a> open outside the report.</p>
+        </div>
+        <div class="side-note">
+          <strong>Margin note</strong>
+          <p>Margin notes qualify the argument. They should feel like part of the page's evidence system, not a detached widget.</p>
+        </div>
+      </aside>
+    </section>
+
+    <figure class="report-figure">
+      <figcaption>
+        <span>Flow / 01</span>
+        <strong>Editorial extraction path</strong>
+        <p>The authoring path moves from material to judgment before layout.</p>
+      </figcaption>
+      <div class="figure-body">
+        <div class="flow-diagram">
+          <div class="flow-node"><span>01</span><strong>Source material</strong></div>
+          <div class="flow-node"><span>02</span><strong>Extract signal</strong></div>
+          <div class="flow-node"><span>03</span><strong>Name thesis</strong></div>
+          <div class="flow-node"><span>04</span><strong>Sequence evidence</strong></div>
+          <div class="flow-node"><span>05</span><strong>Compose HTML</strong></div>
+        </div>
+      </div>
+    </figure>
+
+    <figure class="report-figure">
+      <figcaption>
+        <span>Matrix / 01</span>
+        <strong>Evidence elements share one system</strong>
+        <p>Tables, source notes, and side notes use the same low-contrast editorial language.</p>
+      </figcaption>
+      <div class="figure-body">
+        <div class="matrix-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Element</th>
+                <th>Best use</th>
+                <th>Visual rule</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>Evidence note</th>
+                <td>Source record, caveat, confidence note, or measured fact.</td>
+                <td>Accent rule, muted ink, compact label.</td>
+              </tr>
+              <tr>
+                <th>Side note</th>
+                <td>Interpretive margin comment or narrow quoted passage.</td>
+                <td>Fine rule, serif body, no heavy card fill.</td>
+              </tr>
+              <tr>
+                <th>Matrix</th>
+                <td>Comparison across claims, risks, decisions, or layers.</td>
+                <td>Top rule, short headers, top-aligned cells.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </figure>
+
+    <section class="report-section">
+      <div class="section-kicker">02 / Voice</div>
+      <div class="section-body">
+        <h2>The writing should sound like a person thinking clearly.</h2>
+        <p class="section-lede">Iris should avoid filler phrases, false neutrality, and mechanical summary language.</p>
+        <p>The page can be polished without becoming evasive. It should say what the material supports, what it does not support, and what decision the reader can reasonably make next.</p>
+        <p>The tone should adapt to the user's language. Chinese reports should read as natural Chinese, not translated English. English reports should avoid swollen product language. Technical reports should stay precise without turning every sentence into jargon.</p>
+      </div>
+      <aside class="evidence-margin">
+        <ol class="point-list">
+          <li><span>01</span><p>Use direct verbs and concrete nouns.</p></li>
+          <li><span>02</span><p>Mark speculation as speculation.</p></li>
+          <li><span>03</span><p>Keep next actions actionable.</p></li>
+        </ol>
+      </aside>
+    </section>
+
+    <section class="closing">
+      <div class="closing-list">
+        <h3>Assumptions</h3>
+        <ul><li>An agent has already read the source material.</li><li>The report is for human decision support.</li></ul>
+      </div>
+      <div class="closing-list">
+        <h3>Anti-patterns</h3>
+        <ul><li>Do not fill space with generic summary language.</li><li>Do not invent certainty when the source only supports a question.</li></ul>
+      </div>
+      <div class="closing-list">
+        <h3>Next actions</h3>
+        <ul><li>Compose final reports directly as HTML.</li><li>Inspect the page at desktop and mobile widths.</li></ul>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <span>reported with Iris</span>
+    <span>editorial-method</span>
+  </footer>
+  <script>
+    document.querySelectorAll('a[href]').forEach(function(link) {
+      var href = link.getAttribute('href');
+      if (!href || href.charAt(0) === '#') return;
+      link.setAttribute('target', '_blank');
+      link.setAttribute('rel', 'noopener noreferrer');
+    });
+  </script>
+</body>
+</html>
