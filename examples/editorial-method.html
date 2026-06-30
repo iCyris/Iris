@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Report Before Decoration</title>
+  <title>Thinking, Made Readable</title>
   <style>
 :root {
   --paper: #f4f2ed;
@@ -81,7 +81,7 @@ h1 {
   grid-column: 1 / 7;
   font-family: var(--display);
   font-size: clamp(48px, 5.8vw, 72px);
-  line-height: .96;
+  line-height: 1.06;
   letter-spacing: 0;
   color: color-mix(in srgb, var(--ink) 94%, var(--accent));
 }
@@ -184,7 +184,7 @@ footer { width: min(var(--max), calc(100vw - 24px)); margin: 0 auto 28px; paddin
 }
 @media (max-width: 760px) {
   .hero-main, .hero-deck, .hero-findings, .section-body, .evidence-margin, .figure-body { max-width: 320px; }
-  h1 { font-size: 42px; line-height: 1.03; }
+  h1 { font-size: 42px; line-height: 1.08; }
   .subtitle { font-size: 22px; line-height: 1.28; }
 }
   </style>
@@ -197,37 +197,37 @@ footer { width: min(var(--max), calc(100vw - 24px)); margin: 0 auto 28px; paddin
         <span>example</span>
       </div>
       <div class="hero-main">
-        <h1>Report Before Decoration</h1>
+        <h1>Thinking, Made Readable</h1>
         <div class="hero-deck">
-          <p class="subtitle">Iris should turn thinking into a reading path before it turns anything into a page.</p>
-          <p class="lead">AI output often arrives as a useful but shapeless transcript. Iris should extract the argument, name the evidence path, and make the remaining uncertainty visible enough for a human reader to trust the page.</p>
-          <p class="thesis"><span>Thesis</span>A strong Iris report is an edited judgment with evidence, not a decorated dump of model output.</p>
+          <p class="subtitle">Iris turns notes, readings, and rough AI output into a report someone can trust.</p>
+          <p class="lead">Most AI output has the facts, but not the room tone: no stakes, no order, no visible confidence. Iris reads the mess, finds the point, and gives the reader a page with pace, evidence, and room for careful doubt.</p>
+          <p class="thesis"><span>Thesis</span>An Iris report earns its design by making a conclusion easier to read, check, and act on.</p>
         </div>
       </div>
       <div class="hero-findings">
         <p>Key findings</p>
-        <div class="hero-finding"><span>01</span><strong>The report starts with a judgment, not a transcript.</strong></div>
-        <div class="hero-finding"><span>02</span><strong>Draft notes are private working material, not the final surface.</strong></div>
-        <div class="hero-finding"><span>03</span><strong>Figures appear only when they clarify a relationship.</strong></div>
+        <div class="hero-finding"><span>01</span><strong>Lead with the point the reader came to inspect.</strong></div>
+        <div class="hero-finding"><span>02</span><strong>Keep scratch notes backstage.</strong></div>
+        <div class="hero-finding"><span>03</span><strong>Use figures only when they explain a relationship.</strong></div>
       </div>
     </section>
 
     <section class="report-section">
       <div class="section-kicker">01 / Material</div>
       <div class="section-body">
-        <h2>The source is material, not the final structure.</h2>
-        <p class="section-lede">Useful inputs can be messy: codebase notes, product critique, research excerpts, event timelines, rough thinking, or a requirements draft.</p>
-        <p>The agent's first job is to decide what the material is trying to help the reader understand. A late conclusion can become the opening thesis. A scattered set of caveats can become the assumptions section. A long list can become one diagram if the relationship matters more than the wording.</p>
-        <p>The report should preserve meaning without preserving clutter. It should separate observation from inference and make uncertainty explicit instead of smoothing it away.</p>
+        <h2>The notes are not the story.</h2>
+        <p class="section-lede">Iris can start from code notes, product critique, research clips, timelines, half-formed thoughts, or a rough requirement.</p>
+        <p>The first pass asks what the reader needs to see. A buried conclusion may become the title. Caveats may become assumptions. A long list may become one figure when the relationship matters more than the wording.</p>
+        <p>The page keeps the signal and lets the clutter fall away. It names what is observed, what is inferred, and where the report still owes the reader caution.</p>
       </div>
       <aside class="evidence-margin">
         <div class="evidence-note">
           <strong>Evidence note</strong>
-          <p>Labels, source notes, and citations should use the report language. External references such as <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a" target="_blank" rel="noopener noreferrer">HTML anchor guidance</a> open outside the report.</p>
+          <p>Labels, source notes, and citations follow the report language. External references such as <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a" target="_blank" rel="noopener noreferrer">HTML anchor guidance</a> open away from the report, so the page stays intact.</p>
         </div>
         <div class="side-note">
           <strong>Margin note</strong>
-          <p>Margin notes qualify the argument. They should feel like part of the page's evidence system, not a detached widget.</p>
+          <p>Margin notes qualify the nearby reading. They belong to the evidence rhythm, not to a loose aside.</p>
         </div>
       </aside>
     </section>
@@ -235,16 +235,16 @@ footer { width: min(var(--max), calc(100vw - 24px)); margin: 0 auto 28px; paddin
     <figure class="report-figure">
       <figcaption>
         <span>Flow / 01</span>
-        <strong>Editorial extraction path</strong>
-        <p>The authoring path moves from material to judgment before layout.</p>
+        <strong>From notes to judgment</strong>
+        <p>The authoring path chooses the reading before it chooses the layout.</p>
       </figcaption>
       <div class="figure-body">
         <div class="flow-diagram">
-          <div class="flow-node"><span>01</span><strong>Source material</strong></div>
-          <div class="flow-node"><span>02</span><strong>Extract signal</strong></div>
-          <div class="flow-node"><span>03</span><strong>Name thesis</strong></div>
-          <div class="flow-node"><span>04</span><strong>Sequence evidence</strong></div>
-          <div class="flow-node"><span>05</span><strong>Compose HTML</strong></div>
+          <div class="flow-node"><span>01</span><strong>Raw material</strong></div>
+          <div class="flow-node"><span>02</span><strong>Find signal</strong></div>
+          <div class="flow-node"><span>03</span><strong>Set thesis</strong></div>
+          <div class="flow-node"><span>04</span><strong>Order evidence</strong></div>
+          <div class="flow-node"><span>05</span><strong>Write HTML</strong></div>
         </div>
       </div>
     </figure>
@@ -252,8 +252,8 @@ footer { width: min(var(--max), calc(100vw - 24px)); margin: 0 auto 28px; paddin
     <figure class="report-figure">
       <figcaption>
         <span>Matrix / 01</span>
-        <strong>Evidence elements share one system</strong>
-        <p>Tables, source notes, and side notes use the same low-contrast editorial language.</p>
+        <strong>One margin language</strong>
+        <p>Source notes, side notes, and tables share the same quiet material.</p>
       </figcaption>
       <div class="figure-body">
         <div class="matrix-wrap">
@@ -268,18 +268,18 @@ footer { width: min(var(--max), calc(100vw - 24px)); margin: 0 auto 28px; paddin
             <tbody>
               <tr>
                 <th>Evidence note</th>
-                <td>Source record, caveat, confidence note, or measured fact.</td>
-                <td>Accent rule, muted ink, compact label.</td>
+                <td>A source record, caveat, confidence note, or measured fact.</td>
+                <td>Same accent rule, same muted body type.</td>
               </tr>
               <tr>
                 <th>Side note</th>
-                <td>Interpretive margin comment or narrow quoted passage.</td>
-                <td>Fine rule, serif body, no heavy card fill.</td>
+                <td>A nearby qualification, short quote, or "why this matters" note.</td>
+                <td>Same skeleton, different label.</td>
               </tr>
               <tr>
                 <th>Matrix</th>
-                <td>Comparison across claims, risks, decisions, or layers.</td>
-                <td>Top rule, short headers, top-aligned cells.</td>
+                <td>A comparison across conclusions, risks, decisions, or layers.</td>
+                <td>Short headers and top-aligned cells.</td>
               </tr>
             </tbody>
           </table>
@@ -290,16 +290,16 @@ footer { width: min(var(--max), calc(100vw - 24px)); margin: 0 auto 28px; paddin
     <section class="report-section">
       <div class="section-kicker">02 / Voice</div>
       <div class="section-body">
-        <h2>The writing should sound like a person thinking clearly.</h2>
-        <p class="section-lede">Iris should avoid filler phrases, false neutrality, and mechanical summary language.</p>
-        <p>The page can be polished without becoming evasive. It should say what the material supports, what it does not support, and what decision the reader can reasonably make next.</p>
-        <p>The tone should adapt to the user's language. Chinese reports should read as natural Chinese, not translated English. English reports should avoid swollen product language. Technical reports should stay precise without turning every sentence into jargon.</p>
+        <h2>The prose should sound edited, not generated.</h2>
+        <p class="section-lede">Cut filler, false neutrality, and sentences that announce their own importance.</p>
+        <p>A polished page can still speak plainly. It says what the material supports, where it stops, and what the reader can do next.</p>
+        <p>The voice follows the reader's language. Chinese pages should read like Chinese thinking. English pages should avoid product fog. Technical pages can stay precise without turning every sentence into a term sheet.</p>
       </div>
       <aside class="evidence-margin">
         <ol class="point-list">
-          <li><span>01</span><p>Use direct verbs and concrete nouns.</p></li>
-          <li><span>02</span><p>Mark speculation as speculation.</p></li>
-          <li><span>03</span><p>Keep next actions actionable.</p></li>
+          <li><span>01</span><p>Choose verbs with actors.</p></li>
+          <li><span>02</span><p>Mark inference where evidence ends.</p></li>
+          <li><span>03</span><p>End with a next step someone can do.</p></li>
         </ol>
       </aside>
     </section>
@@ -307,20 +307,20 @@ footer { width: min(var(--max), calc(100vw - 24px)); margin: 0 auto 28px; paddin
     <section class="closing">
       <div class="closing-list">
         <h3>Assumptions</h3>
-        <ul><li>An agent has already read the source material.</li><li>The report is for human decision support.</li></ul>
+        <ul><li>The source material has already been read with care.</li><li>The reader needs a decision, not a prettier transcript.</li></ul>
       </div>
       <div class="closing-list">
         <h3>Anti-patterns</h3>
-        <ul><li>Do not fill space with generic summary language.</li><li>Do not invent certainty when the source only supports a question.</li></ul>
+        <ul><li>Do not pad the page with summary voice.</li><li>Do not make a weak source sound certain.</li></ul>
       </div>
       <div class="closing-list">
         <h3>Next actions</h3>
-        <ul><li>Compose final reports directly as HTML.</li><li>Inspect the page at desktop and mobile widths.</li></ul>
+        <ul><li>Write the report directly in HTML.</li><li>Check the first screen, evidence margin, and mobile view.</li></ul>
       </div>
     </section>
   </main>
   <footer>
-    <span>reported with Iris</span>
+    <span>made with Iris</span>
     <span>editorial-method</span>
   </footer>
   <script>

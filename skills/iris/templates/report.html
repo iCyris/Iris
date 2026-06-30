@@ -70,10 +70,9 @@ a:hover { color: var(--deep); text-decoration-color: currentColor; }
   color: var(--muted); padding-bottom: 16px;
 }
 .brand { display: inline-flex; align-items: center; gap: 8px; color: var(--ink); }
-.brand-mark { width: 28px; height: 28px; display: block; object-fit: contain; opacity: .85; }
 .hero-main { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); gap: clamp(28px, 4vw, 52px); align-items: start; align-self: start; padding-top: clamp(28px, 5vw, 64px); }
 h1 {
-  grid-column: 1 / 7; font-family: var(--display); font-size: clamp(48px, 5.8vw, 72px); line-height: .94; font-weight: 800;
+  grid-column: 1 / 7; font-family: var(--display); font-size: clamp(48px, 5.8vw, 72px); line-height: 1.06; font-weight: 800;
   text-wrap: balance; letter-spacing: 0; color: var(--deep); overflow-wrap: anywhere;
 }
 .hero-deck { grid-column: 7 / 11; display: grid; gap: 14px; align-content: start; align-self: start; padding-top: 4px; }
@@ -319,7 +318,7 @@ html[lang^="zh"] .section-body p { font-size: 17px; line-height: 1.86; }
   .hero-findings { grid-template-columns: 1fr 1fr; }
   .hero-findings > p { grid-column: 1 / -1; border-bottom: 1px solid var(--hairline); }
   .meta-item { border-right: 0; border-bottom: 1px solid var(--hairline); }
-  h1 { font-size: 50px; line-height: .95; }
+  h1 { font-size: 50px; line-height: 1.06; }
   html[lang^="zh"] h1 { font-size: 36px; line-height: 1.12; }
   .section-body h2 { font-size: 28px; }
   .arch-grid, .timeline-diagram, .decision-map { grid-template-columns: 1fr; }
@@ -332,7 +331,7 @@ html[lang^="zh"] .section-body p { font-size: 17px; line-height: 1.86; }
   .hero-main { padding-top: 20px; }
   .hero-main, .hero-deck, .section-body, .evidence-margin, .figure-body { width: 100%; max-width: calc(100vw - 36px); }
   .brand-row { align-items: flex-start; }
-  h1 { font-size: 38px; letter-spacing: 0; }
+  h1 { font-size: 38px; line-height: 1.08; letter-spacing: 0; }
   html[lang^="zh"] h1 { font-size: 32px; }
   .subtitle { font-size: 18px; }
   .hero-meta, .hero-findings { grid-template-columns: 1fr; }
@@ -345,7 +344,7 @@ html[lang^="zh"] .section-body p { font-size: 17px; line-height: 1.86; }
 }
 @media (max-width: 430px) {
   .hero-main, .hero-deck, .hero-findings, .section-body, .evidence-margin, .figure-body { max-width: 320px; }
-  h1 { font-size: 34px; line-height: 1.02; }
+  h1 { font-size: 34px; line-height: 1.08; }
   html[lang^="zh"] h1 { font-size: 30px; line-height: 1.12; }
   .subtitle { font-size: 20px; line-height: 1.28; }
 }
