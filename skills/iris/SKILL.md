@@ -63,7 +63,6 @@ Anything unclear but analytical -> standard analysis
 
 - `{{LANG}}`: `en`, `zh`, or `zh-CN`
 - `{{TITLE}}`: tight report title, ideally 10 words or fewer
-- `{{PALETTE}}`: CSS custom properties for color atmosphere
 - `{{HERO}}`: report opening with a text-only brand row, title, deck, thesis, and key findings
 - `{{BODY}}`: report sections, evidence, figures, quotes, lists, and diagrams
 - `{{CLOSING}}`: assumptions, open decisions or anti-patterns, and meaningful follow-through
@@ -155,47 +154,10 @@ Body vocabulary inside `report.html`:
 
 The position-led mode should be bold, but not vague. It still needs evidence, assumptions, and concrete follow-through.
 
-## Palette System
+## Theme System
 
-Apply exactly one palette per page. Paste the selected palette into `{{PALETTE}}`.
+Use the built-in theme variables already embedded in `report.html`. The canonical Iris theme is the sharp editorial palette used by the shipped examples:
 
-### iris
-```css
---paper: #f7f5ef;
---surface: #fcfbf6;
---ink: #151512;
---muted: #74756f;
---line: #d8d6cd;
---accent: #6f80c7;
---accent-2: #8caf9a;
---haze: #d9ddef;
-```
-
-### quiet
-```css
---paper: #f6f2ea;
---surface: #fffdf8;
---ink: #181713;
---muted: #777166;
---line: #d9d0c1;
---accent: #7c9a84;
---accent-2: #b7a789;
---haze: #e4ded2;
-```
-
-### clear
-```css
---paper: #f7f8f5;
---surface: #ffffff;
---ink: #121417;
---muted: #6f7679;
---line: #d6dddd;
---accent: #5f9fb4;
---accent-2: #9abf96;
---haze: #dcebef;
-```
-
-### sharp
 ```css
 --paper: #f4f2ed;
 --surface: #fbfaf6;
@@ -207,19 +169,7 @@ Apply exactly one palette per page. Paste the selected palette into `{{PALETTE}}
 --haze: #d8dbea;
 ```
 
-### warm
-```css
---paper: #f8f2ea;
---surface: #fffaf3;
---ink: #1d1712;
---muted: #7b7068;
---line: #dfd2c4;
---accent: #ad7b61;
---accent-2: #9d9f72;
---haze: #ead9ca;
-```
-
-Use one active accent per report. Accent colors should feel like faded ink, not neon.
+Do not invent alternate palettes for ordinary reports. Accent colors should feel like faded ink, not neon.
 
 ## Diagram System
 
@@ -278,12 +228,11 @@ The closing is not a ritual "next steps" box. It should help the reader know wha
 3. Read `references/content-method.md` for any substantial report.
 4. Set the language contract for the report and keep every editorial label in that language.
 5. Choose the content mode inside `report.html`.
-6. Choose one palette.
-7. Compose the final report as self-contained HTML.
-8. Ensure every external link uses `target="_blank"` and `rel="noopener noreferrer"`.
-9. Save it wherever the user request or local project context naturally expects the artifact.
-10. Inspect the rendered page.
-11. Refine the report structure before adding more style.
+6. Compose the final report as self-contained HTML using the template's embedded theme.
+7. Ensure every external link uses `target="_blank"` and `rel="noopener noreferrer"`.
+8. Save it wherever the user request or local project context naturally expects the artifact.
+9. Inspect the rendered page.
+10. Refine the report structure before adding more style.
 
 ## Quality Bar
 

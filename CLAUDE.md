@@ -17,11 +17,11 @@ Do not use Iris for resumes, slide decks, letters, portfolios, landing pages, PD
 2. Identify the report thesis, key findings, evidence path, assumptions, open decisions, and meaningful follow-through.
 3. Use `content-method.md` to separate observation, inference, judgment, and uncertainty.
 4. Use `report.html` as the structure and style reference. Choose the content mode inside the report: standard analysis, evidence-first research, or position-led argument.
-5. Choose a palette from `SKILL.md` or compose a custom palette using the same CSS variable names.
+5. Use the embedded Iris theme from `report.html`; do not choose or invent alternate palettes for ordinary reports.
 6. Compose the final report as self-contained HTML using Iris's CSS classes and visual vocabulary.
 7. Save the HTML wherever the user request or local project context naturally expects the artifact.
 8. Inspect the HTML output before delivery. The first screen must make the report's judgment and evidence path visible without adding a metadata strip.
-9. Refine by adjusting content, structure, or palette. Do not hand-edit template CSS for one-off content changes.
+9. Refine by adjusting content and structure. Do not hand-edit template CSS for one-off content changes.
 
 ## Output Standard
 
@@ -35,6 +35,6 @@ The page should feel like a premium editorial analysis report, not a component d
 | Evidence-first | Research report with observations, source synthesis, and evidence-to-insight pairs | Research notes, field findings, exploratory analysis |
 | Position-led | Strong argument with declarations, counter-arguments, and decision pressure | Principles, critiques, strong product or technical stances |
 
-`report.html` documents the canonical slots: `{{LANG}}`, `{{TITLE}}`, `{{PALETTE}}`, `{{HERO}}`, `{{BODY}}`, `{{CLOSING}}`, `{{FOOTER}}`.
+`report.html` documents the canonical slots: `{{LANG}}`, `{{TITLE}}`, `{{HERO}}`, `{{BODY}}`, `{{CLOSING}}`, `{{FOOTER}}`.
 
 Markdown may be used as a private scratchpad, but it is not the final deliverable. Iris delivers a self-contained HTML report.

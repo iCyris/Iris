@@ -73,22 +73,22 @@ The finished artifact is a self-contained HTML report. Intermediate notes can be
 
 ## Color
 
-Palettes are defined as CSS custom properties pasted into `{{PALETTE}}`.
+The canonical Iris theme is embedded directly in `report.html` and should stay aligned with the shipped examples.
 
-Every palette uses these variables:
+The theme uses these variables:
 
 ```css
---paper
---surface
---ink
---muted
---line
---accent
---accent-2
---haze
+--paper: #f4f2ed;
+--surface: #fbfaf6;
+--ink: #101010;
+--muted: #66635e;
+--line: #d3d0c7;
+--accent: #545f80;
+--accent-2: #a06f58;
+--haze: #d8dbea;
 ```
 
-Use one active accent per report. Accent colors should feel like faded ink. Avoid neon, saturated AI gradients, and one-note monochrome palettes.
+Do not create alternate palettes for ordinary reports. Accent colors should feel like faded ink. Avoid neon, saturated AI gradients, and one-note monochrome palettes.
 
 ## Typography
 
