@@ -19,7 +19,7 @@ Markdown can be used privately as a scratchpad while thinking. It is not a user-
 
 ## Language Discipline
 
-The editorial voice, section labels, metadata labels, figure captions, table headers, assumptions, open decisions, and next actions should use the same language as the user's request by default.
+The editorial voice, section labels, metadata labels, figure captions, table headers, assumptions, open decisions, and follow-through should use the same language as the user's request by default.
 
 Allowed exceptions:
 
@@ -29,6 +29,8 @@ Allowed exceptions:
 - bilingual reports explicitly requested by the user
 
 When an exception appears, make it feel intentional. Do not leave English labels such as "Thesis", "Key findings", "Assumptions", or "Next actions" inside an otherwise Chinese report. Do not translate code, package names, command names, or source titles that would become less identifiable after translation.
+
+For Chinese reports, treat mixed Chinese, English, and numerals as a typography problem as well as a writing problem. Product names, identifiers, and numbers should remain traceable, but they should be surrounded by Chinese prose that gives them natural rhythm. Avoid dumping raw English labels into headings when a Chinese label would preserve meaning.
 
 ## Editorial Standards
 
@@ -86,7 +88,17 @@ Every final HTML report should include:
 - Opening: subject, reader, source context, thesis, and key findings.
 - Body: evidence sections arranged in a deliberate reading order.
 - Figures: optional, but meaningful when used.
-- Closing: assumptions, open decisions or anti-patterns, and next actions.
+- Closing: assumptions, open decisions or anti-patterns, and concrete follow-through.
+
+## Closing Choices
+
+Do not add a mechanical "next actions" list just because the template has a closing column. The closing should answer three useful questions:
+
+- What is this report assuming?
+- What remains undecided or intentionally avoided?
+- What should the reader do, check, decide, or watch next?
+
+If the material does not justify action, use the final column for "复查点", "观察窗口", "暂不行动的理由", or the English equivalent. In Chinese reports, prefer natural headings such as "建议处理", "后续验证", or "待观察" over "下一步动作" unless the report is an execution plan.
 
 ## Links And Source Access
 

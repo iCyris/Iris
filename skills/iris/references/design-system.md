@@ -14,7 +14,7 @@ Iris uses Editorial Intelligence: one canonical report template with flexible co
 | --- | --- | --- |
 | Standard analysis | AI summaries, codebase analysis, strategy memos, decision reports | Thesis, key findings, evidence sections, figures, closing |
 | Evidence-first | Research notes, source synthesis, evidence to insight material | Observations, source caveats, evidence-to-insight pairs, method notes |
-| Position-led | Strong stances, principles, critiques | Declarations, counter-arguments, decision criteria, next actions |
+| Position-led | Strong stances, principles, critiques | Declarations, counter-arguments, decision criteria, follow-through |
 
 ## Core Feeling
 
@@ -42,17 +42,17 @@ The preferred report structure is:
 4. Key findings make the report scannable.
 5. Sections advance claim and evidence.
 6. Figures clarify relationships near the claims they support.
-7. Closing records assumptions, open decisions or anti-patterns, and next actions.
+7. Closing records assumptions, open decisions or anti-patterns, and meaningful follow-through.
 
 Do not treat every content object as an equal card. A strong Iris report has hierarchy: opening, judgment, evidence, figure, conclusion.
 
 ## System Consistency
 
-Every supporting element should feel authored by Iris, not borrowed from another UI kit. Evidence margins, quoted notes, figures, tables, tags, and metadata should share the same material rules:
+Every supporting element should feel authored by Iris, not borrowed from another UI kit. Evidence margins, quoted notes, figures, tables, and tags should share the same material rules:
 
 - thin rules instead of heavy boxes
 - faded-ink accent lines instead of saturated fills
-- small mono labels with the same casing rhythm
+- compact labels with the same casing rhythm
 - quiet surface steps that do not compete with body text
 - no generic SaaS cards, floating panels, or unrelated shadow treatments
 
@@ -64,7 +64,7 @@ The finished artifact is a self-contained HTML report. Intermediate notes can be
 
 ## Composition
 
-- Use a report sheet as the unit: folio, metadata, findings strip, evidence margins, and figure plates.
+- Use a report sheet as the unit: folio, findings strip, evidence margins, and figure plates.
 - Use typography, rhythm, and spatial contrast as structure.
 - Keep information density high enough to feel like an analysis report.
 - Let diagrams sit in the reading flow.
@@ -94,9 +94,10 @@ Use one active accent per report. Accent colors should feel like faded ink. Avoi
 
 - Title: large, confident, and report-like. It should be a visual anchor, not a poster that eats the page.
 - Body: quiet editorial reading type with enough line height for long passages.
-- Metadata: small mono labels with tabular numbers.
+- Labels and dates: compact, quiet, and legible, without turning the opening into a metadata strip.
 - Findings: compact, high-contrast, scan-friendly.
 - Chinese pages need calmer weight and more line height than Latin pages.
+- Chinese body prose should use a CJK-aware serif chain instead of a Latin-first serif stack. Numbers, English product names, file names, and code identifiers should remain legible without looking pasted into the Chinese line.
 - Letter spacing remains `0` across the template.
 
 Language and typography are linked. When the report is Chinese, translate the editorial labels and let the Chinese type scale breathe. When the report is English, keep labels English and avoid translated Chinese sentence rhythm. Preserve original-language evidence only when it has source value.
@@ -120,7 +121,10 @@ Tables should feel like evidence matrices, not raw spreadsheet exports.
 - Make the first column the row thesis or category, not an arbitrary field name.
 - Prefer 3 to 5 columns. If more dimensions are needed, split the table or turn it into a figure.
 - Keep rows separated by fine rules. Avoid heavy cell borders, zebra stripes, decorative shadows, and cramped padding.
+- Table headers should be readable at a glance. Do not style them as tiny mono labels, and do not add tinted header backgrounds unless the table is a dense data grid that truly needs banding.
 - On mobile, allow horizontal scrolling inside the table wrapper rather than shrinking text until it becomes unreadable.
+- Give figure captions a quieter title scale than section headings. The caption title names the evidence plate; the table or diagram should carry the detailed content.
+- Do not put vertical grid backgrounds behind dense tables. They fight with column rules and create a dirty striped texture on narrow screenshots.
 
 ## Diagrams
 
@@ -148,6 +152,6 @@ Generated HTML should work without JavaScript. If motion is added later, it must
 - Bootstrap, Ant-style UI, or dashboard chrome.
 - Heavy card stacks with identical shadows.
 - Decorative SVGs that do not clarify evidence.
-- Dense paragraphs without thesis, findings, or next actions.
+- Dense paragraphs without thesis, findings, or meaningful follow-through.
 - Oversized display type that hides the report's point.
 - Treating the report as a data transformation instead of an editorial composition.

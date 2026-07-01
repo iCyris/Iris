@@ -1,0 +1,11 @@
+{
+  "$schema": "https://skills.sh/schemas/skills.sh.schema.json",
+  "notGrouped": "bottom",
+  "groupings": [
+    {
+      "title": "Editorial Reports",
+      "description": "Skills for turning AI analysis, research notes, and codebase readings into clear report artifacts.",
+      "skills": ["iris"]
+    }
+  ]
+}

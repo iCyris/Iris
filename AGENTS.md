@@ -32,12 +32,13 @@ Project files, skill instructions, examples, durable deliverables, and generated
 ## Quality Bar
 
 - Make the user's analysis more visible, not merely prettier.
-- Every report should surface thesis, key findings, evidence, assumptions, open decisions, and next actions.
+- Every report should surface thesis, key findings, evidence, assumptions, open decisions, and meaningful follow-through.
 - The first screen should attract attention while making the report's judgment and evidence path obvious.
 - Use typography, spacing, rhythm, and diagrams as meaning-bearing structure.
 - Avoid generic SaaS cards, ornamental gradients, and heavy UI chrome.
 - Diagrams must clarify relationships, flows, or architecture, never decorate.
-- Every output should include assumptions, open decisions, and next actions in the closing.
+- Every output should include assumptions, open decisions, and meaningful follow-through in the closing. Do not invent a stiff "next actions" list when the material only justifies review points, observation windows, or a no-action rationale.
+- Brand rows should be typographic. Do not add decorative brand marks, logo SVGs, circular badges, or `.brand-mark` elements unless a user explicitly asks for a specific brand asset.
 - The HTML should be portable: embedded CSS, inline SVG, no remote dependencies.
 - Content mode is an editorial act: evidence-first and position-led reports should still use `report.html`, but the writing pattern should match the material.
 

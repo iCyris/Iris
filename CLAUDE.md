@@ -14,18 +14,18 @@ Do not use Iris for resumes, slide decks, letters, portfolios, landing pages, PD
 ## Working Pattern
 
 1. Read the source carrier: AI analysis, Markdown, notes, screenshot observations, or an agent-authored codebase analysis.
-2. Identify the report thesis, key findings, evidence path, assumptions, open decisions, and next actions.
+2. Identify the report thesis, key findings, evidence path, assumptions, open decisions, and meaningful follow-through.
 3. Use `content-method.md` to separate observation, inference, judgment, and uncertainty.
 4. Use `report.html` as the structure and style reference. Choose the content mode inside the report: standard analysis, evidence-first research, or position-led argument.
 5. Choose a palette from `SKILL.md` or compose a custom palette using the same CSS variable names.
 6. Compose the final report as self-contained HTML using Iris's CSS classes and visual vocabulary.
 7. Save the HTML wherever the user request or local project context naturally expects the artifact.
-8. Inspect the HTML output before delivery. The first screen must make the report's judgment, reader, and evidence path visible.
+8. Inspect the HTML output before delivery. The first screen must make the report's judgment and evidence path visible without adding a metadata strip.
 9. Refine by adjusting content, structure, or palette. Do not hand-edit template CSS for one-off content changes.
 
 ## Output Standard
 
-The page should feel like a premium editorial analysis report, not a component demo or generic document template. Prefer strong hierarchy, restrained color, precise diagrams, evidence notes, exact copy, and a reading rhythm that leads from thesis to evidence to next action.
+The page should feel like a premium editorial analysis report, not a component demo or generic document template. Prefer strong hierarchy, restrained color, precise diagrams, evidence notes, exact copy, and a reading rhythm that leads from thesis to evidence to justified follow-through. Keep the brand row typographic; do not add decorative brand marks or logo SVGs unless the user explicitly asks for one.
 
 ## Report Mode Quick Reference
 

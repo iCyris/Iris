@@ -22,7 +22,7 @@
   --reader-ink: color-mix(in srgb, var(--ink) 84%, var(--muted));
   --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
   --display: "Avenir Next", "Helvetica Neue", Arial, "PingFang SC", sans-serif;
-  --serif: Georgia, "Times New Roman", "Songti SC", serif;
+  --serif: Charter, Georgia, "Times New Roman", "Songti SC", serif;
 }
 * { box-sizing: border-box; margin: 0; }
 body {
@@ -30,6 +30,8 @@ body {
   background: linear-gradient(180deg, color-mix(in srgb, var(--paper) 96%, #fff), var(--paper));
   font-family: "Helvetica Neue", Arial, "PingFang SC", sans-serif;
   -webkit-font-smoothing: antialiased;
+  font-kerning: normal;
+  text-rendering: optimizeLegibility;
   overflow-x: hidden;
   overflow-wrap: break-word;
 }
@@ -114,11 +116,11 @@ h1 {
   border-top: 1px solid var(--soft-rule);
 }
 .section-kicker { grid-column: 1 / 3; font-family: var(--mono); font-size: 10px; color: var(--accent); text-transform: uppercase; padding-top: 8px; }
-.section-body { grid-column: 3 / 9; }
+.section-body { grid-column: 3 / 9; min-width: 0; }
 .section-body h2 { margin-bottom: 18px; font-family: var(--display); font-size: clamp(30px, 4vw, 42px); line-height: 1.02; }
 .section-lede { margin-bottom: 14px; font-size: 19px; line-height: 1.45; color: var(--muted); }
 .section-body p { margin-bottom: 16px; font-family: var(--serif); font-size: 17px; line-height: 1.75; color: var(--reader-ink); overflow-wrap: anywhere; }
-.evidence-margin { grid-column: 9 / 11; display: grid; gap: 14px; align-content: start; }
+.evidence-margin { grid-column: 9 / 11; display: grid; gap: 14px; align-content: start; min-width: 0; }
 .evidence-note,
 .side-note {
   padding: 13px 0 14px 14px;
@@ -141,12 +143,15 @@ h1 {
 .point-list li { display: grid; grid-template-columns: 32px 1fr; gap: 10px; padding-top: 10px; border-top: 1px solid var(--soft-rule); }
 .point-list span { font-family: var(--mono); color: var(--accent); font-size: 10px; }
 .point-list p { margin: 0; font-size: 12px; line-height: 1.45; color: var(--muted); }
-.report-figure { background: color-mix(in srgb, var(--haze) 22%, transparent); }
-.report-figure figcaption { grid-column: 1 / 3; }
+.report-figure {
+  background: linear-gradient(180deg, color-mix(in srgb, var(--haze) 18%, transparent), color-mix(in srgb, var(--surface) 56%, transparent)), color-mix(in srgb, var(--paper) 72%, var(--surface));
+  box-shadow: inset 0 1px 0 var(--hairline), inset 0 -1px 0 color-mix(in srgb, var(--ink) 5%, transparent);
+}
+.report-figure figcaption { grid-column: 1 / 3; min-width: 0; }
 .report-figure figcaption span { font-family: var(--mono); font-size: 9px; color: var(--accent); text-transform: uppercase; }
-.report-figure figcaption strong { display: block; margin-top: 12px; font-size: 24px; line-height: 1.08; }
-.report-figure figcaption p { margin-top: 10px; font-size: 13px; line-height: 1.5; color: var(--muted); }
-.figure-body { grid-column: 3 / 11; }
+.report-figure figcaption strong { display: block; margin-top: 12px; font-size: clamp(19px, 1.8vw, 22px); line-height: 1.14; }
+.report-figure figcaption p { margin-top: 10px; font-size: 12px; line-height: 1.55; color: var(--muted); }
+.figure-body { grid-column: 3 / 11; min-width: 0; }
 .flow-diagram { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); border-top: 2px solid var(--ink); border-bottom: 1px solid var(--hairline); }
 .flow-node { min-height: 118px; padding: 16px 14px; display: grid; align-content: space-between; border-right: 1px solid var(--hairline); background: var(--surface); }
 .flow-node:last-child { border-right: 0; }
@@ -154,13 +159,17 @@ h1 {
 .flow-node strong { font-size: 15px; line-height: 1.2; }
 .matrix-wrap {
   overflow-x: auto;
+  max-width: 100%;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+  scrollbar-gutter: stable;
   border-top: 2px solid color-mix(in srgb, var(--accent) 72%, var(--ink));
   border-bottom: 1px solid var(--hairline);
   background: color-mix(in srgb, var(--surface) 72%, transparent);
 }
-.matrix-wrap table { width: 100%; min-width: 680px; border-collapse: collapse; }
+.matrix-wrap table { width: 100%; min-width: 720px; border-collapse: collapse; }
 .matrix-wrap th, .matrix-wrap td { padding: 15px 18px; border-bottom: 1px solid var(--hairline); text-align: left; vertical-align: top; font-size: 13px; line-height: 1.5; color: color-mix(in srgb, var(--ink) 78%, var(--muted)); }
-.matrix-wrap thead th { font-family: var(--mono); font-size: 9px; line-height: 1.3; text-transform: uppercase; color: var(--accent); background: color-mix(in srgb, var(--haze) 18%, var(--surface)); }
+.matrix-wrap thead th { font-family: var(--sans); font-size: 13px; line-height: 1.42; font-weight: 680; text-transform: none; color: color-mix(in srgb, var(--accent) 72%, var(--ink)); background: transparent; }
 .matrix-wrap tbody th { width: 22%; font-size: 15px; line-height: 1.3; font-weight: 680; color: color-mix(in srgb, var(--ink) 94%, var(--accent)); }
 .matrix-wrap tr:last-child th, .matrix-wrap tr:last-child td { border-bottom: 0; }
 .closing { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; padding-top: 42px; padding-bottom: 52px; }
@@ -174,7 +183,7 @@ footer { width: min(var(--max), calc(100vw - 24px)); margin: 0 auto 28px; paddin
   .hero, .report-section, .report-figure, .closing { padding-left: 20px; padding-right: 20px; }
   .hero, .report-section, .report-figure, .closing, .hero-main { grid-template-columns: 1fr; }
   h1, .hero-deck, .section-kicker, .section-body, .evidence-margin, .report-figure figcaption, .figure-body { grid-column: 1 / -1; }
-  .hero-main, .hero-deck, .section-body, .evidence-margin, .figure-body { width: 100%; max-width: calc(100vw - 40px); }
+  .hero-main, .hero-deck, .section-body, .evidence-margin, .figure-body { width: 100%; max-width: none; }
   .hero { min-height: auto; }
   .hero-findings, .closing, .flow-diagram { grid-template-columns: 1fr; }
   .hero-finding { border-left: 0; border-top: 1px solid var(--hairline); padding-left: 0; }
@@ -183,7 +192,7 @@ footer { width: min(var(--max), calc(100vw - 24px)); margin: 0 auto 28px; paddin
   footer { width: 100vw; padding-left: 18px; padding-right: 18px; }
 }
 @media (max-width: 760px) {
-  .hero-main, .hero-deck, .hero-findings, .section-body, .evidence-margin, .figure-body { max-width: 320px; }
+  .hero-main, .hero-deck, .hero-findings, .section-body, .evidence-margin, .figure-body { max-width: none; }
   h1 { font-size: 42px; line-height: 1.08; }
   .subtitle { font-size: 22px; line-height: 1.28; }
 }
@@ -314,7 +323,7 @@ footer { width: min(var(--max), calc(100vw - 24px)); margin: 0 auto 28px; paddin
         <ul><li>Do not pad the page with summary voice.</li><li>Do not make a weak source sound certain.</li></ul>
       </div>
       <div class="closing-list">
-        <h3>Next actions</h3>
+        <h3>Follow-through</h3>
         <ul><li>Write the report directly in HTML.</li><li>Check the first screen, evidence margin, and mobile view.</li></ul>
       </div>
     </section>

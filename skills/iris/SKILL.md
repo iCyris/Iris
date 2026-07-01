@@ -1,6 +1,6 @@
 ---
 name: iris
-description: "Report layer for AI analysis: turns summaries, research notes, codebase readings, technical explanations, strategy judgments, decision memos, and agent-authored findings into polished single-page HTML reading reports with premium editorial typography, key findings, evidence diagrams, assumptions, and next actions."
+description: "Create editorial one-page HTML reports from AI analysis, research notes, codebase readings, technical explanations, and strategy memos, with a clear thesis, evidence path, useful diagrams, assumptions, open decisions, and next actions."
 ---
 
 # Iris
@@ -33,7 +33,7 @@ Before composing, infer the report language from the user's request and source m
 - If the user writes in Chinese, write the report in natural Chinese and set `{{LANG}}` to `zh-CN` unless they ask otherwise.
 - If the user writes in English, write the report in natural English and set `{{LANG}}` to `en` unless they ask otherwise.
 - Preserve source titles, product names, quoted text, API names, code identifiers, legal names, publication names, and evidence excerpts in their original language when translation would damage meaning or traceability.
-- Do not mix interface labels, section headings, metadata labels, and closing headings across languages. If the body is Chinese, labels such as thesis, key findings, assumptions, and next actions should also be Chinese. If the body is English, keep them English.
+- Do not mix interface labels, section headings, metadata labels, and closing headings across languages. If the body is Chinese, labels such as thesis, key findings, assumptions, and follow-through should also be Chinese. If the body is English, keep them English.
 - When the source material is multilingual, choose one report language for the editorial voice, then mark original-language evidence as quoted or cited material.
 
 ## Report Template
@@ -64,9 +64,9 @@ Anything unclear but analytical -> standard analysis
 - `{{LANG}}`: `en`, `zh`, or `zh-CN`
 - `{{TITLE}}`: tight report title, ideally 10 words or fewer
 - `{{PALETTE}}`: CSS custom properties for color atmosphere
-- `{{HERO}}`: report opening with brand row, title, deck, thesis, metadata, and key findings
+- `{{HERO}}`: report opening with a text-only brand row, title, deck, thesis, and key findings
 - `{{BODY}}`: report sections, evidence, figures, quotes, lists, and diagrams
-- `{{CLOSING}}`: assumptions, open decisions or anti-patterns, and next actions
+- `{{CLOSING}}`: assumptions, open decisions or anti-patterns, and meaningful follow-through
 - `{{FOOTER}}`: signature and slug
 
 ## Required Report Structure
@@ -79,7 +79,7 @@ Every Iris report should include:
 4. **Meaningful figures**: diagrams only when they clarify sequence, dependency, architecture, timeline, matrix, or decision paths.
 5. **Assumptions**: what the report depends on.
 6. **Open decisions or anti-patterns**: what remains unresolved or intentionally avoided.
-7. **Next actions**: concrete follow-through.
+7. **Follow-through**: concrete decisions, checks, or owner-facing moves that logically follow from the report.
 
 If the source lacks any of these, infer responsibly from the material and label uncertainty in the closing.
 
@@ -101,13 +101,15 @@ The report should sound like a careful person explaining the issue. Avoid filler
 
 Use the Iris report vocabulary for all Iris output. The first screen should show:
 
-- brand row and date
+- text-only brand row and date
 - report title
 - subtitle or executive framing
 - lead paragraph
 - thesis block
-- metadata for audience, intent, tone, and success criteria
 - key findings strip
+
+The brand row should be typographic only. Do not add decorative logo SVGs, circular marks, image badges, or `.brand-mark` elements to generated reports unless the user explicitly asks for a specific brand asset.
+Do not add a hero metadata strip for audience, scenario, evidence, constraints, or success criteria. That information belongs in prose, evidence notes, or the closing only when it materially helps the argument.
 
 Body vocabulary:
 
@@ -138,7 +140,7 @@ Body vocabulary inside `report.html`:
 - `.findings-list` for evidence-to-insight pairs
 - `.point-list` for compact observations
 
-An evidence-first report should still close with assumptions and next actions.
+An evidence-first report should still close with assumptions and concrete follow-through.
 
 ## Position-Led Guidance
 
@@ -151,7 +153,7 @@ Body vocabulary inside `report.html`:
 - `.point-list` for counter-arguments and rejected alternatives
 - `.report-figure` for clarifying figures
 
-The position-led mode should be bold, but not vague. It still needs evidence, assumptions, and next actions.
+The position-led mode should be bold, but not vague. It still needs evidence, assumptions, and concrete follow-through.
 
 ## Palette System
 
@@ -250,12 +252,29 @@ Evidence margins and tables should look like the same editorial system, not impo
 - Do not stack visually unrelated evidence treatments in the same margin. Use the same accent line, label casing, and muted ink rhythm across the margin.
 - Use `.matrix-wrap` around tables whenever the table is part of the argument. Tables should compare claims, risks, layers, decisions, or evidence. Avoid generic spreadsheet styling.
 - Keep table headers short, align cells to the top, and write row labels as editorial categories rather than raw field names.
-- On mobile, tables may scroll horizontally, but the wrapper must preserve readable padding and visible boundaries.
+- On mobile, tables may scroll horizontally, but the wrapper must preserve readable padding, visible boundaries, and enough intrinsic table width for columns to remain legible.
+
+## Chinese Typography
+
+Chinese reports should feel intentionally typeset, especially when numbers, English product names, file paths, and code identifiers appear inside Chinese sentences.
+
+- Use the template's CJK-aware font variables. For Chinese body prose, prefer the CJK serif chain already defined by `report.html`; for labels, dates, code, and compact evidence, use the sans or mono variables.
+- Do not force Latin-first serif stacks into Chinese paragraphs. Mixed strings such as `HTML`, `PV`, `0731`, `API`, and `30%` should sit calmly inside the line instead of looking pasted in from another type system.
+- Keep editorial labels, table headings, figure captions, assumptions, and follow-through headings in the report language. Preserve English only for product names, code, source titles, or terms whose identity would be damaged by translation.
+- Do not insert brand marks or decorative symbols to make the first row feel branded. Let typography, date, report type, and evidence structure carry the identity.
+
+## Closing Guidance
+
+The closing is not a ritual "next steps" box. It should help the reader know what can be trusted, what remains unresolved, and what kind of follow-through is justified.
+
+- Use three closing columns by default: assumptions, open decisions or anti-patterns, and follow-through.
+- In Chinese reports, prefer headings such as `前提假设`, `待确认`, and `建议处理` or `后续验证`. Avoid the stiff label `下一步动作` unless the report is literally an execution plan.
+- If there is no meaningful action, do not invent busywork. Use the final column for `复查点`, `观察窗口`, or `暂不行动的理由`, and make that choice explicit in the content.
 
 ## Workflow
 
 1. Read the material.
-2. Identify the reader, decision context, thesis, key findings, evidence, assumptions, and next actions.
+2. Identify the reader, decision context, thesis, key findings, evidence, assumptions, and concrete follow-through.
 3. Read `references/content-method.md` for any substantial report.
 4. Set the language contract for the report and keep every editorial label in that language.
 5. Choose the content mode inside `report.html`.

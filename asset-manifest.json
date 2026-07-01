@@ -32,11 +32,6 @@
       "role": "Iris positioning, voice, visual territory, and anti-patterns."
     },
     {
-      "path": "LOGO_SPEC.md",
-      "producer": "convallaria-logo",
-      "role": "Current logo asset usage and misuse guidance."
-    },
-    {
       "path": "assets/logo/generated/iris-mark-transparent.png",
       "producer": "convallaria-logo",
       "role": "Primary transparent raster logo mark for README and rendered HTML."

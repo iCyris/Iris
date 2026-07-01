@@ -22,14 +22,17 @@
   --reader-ink: color-mix(in srgb, var(--ink) 84%, var(--muted));
   --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
   --display: "Avenir Next", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
-  --serif: "Songti SC", "STSong", Georgia, "Times New Roman", SimSun, serif;
+  --sans: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+  --serif: "Source Han Serif SC", "Noto Serif CJK SC", "Songti SC", "STSong", SimSun, Georgia, serif;
 }
 * { box-sizing: border-box; margin: 0; }
 body {
   color: var(--ink);
   background: linear-gradient(180deg, color-mix(in srgb, var(--paper) 96%, #fff), var(--paper));
-  font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+  font-family: var(--sans);
   -webkit-font-smoothing: antialiased;
+  font-kerning: normal;
+  text-rendering: optimizeLegibility;
   overflow-x: hidden;
   overflow-wrap: break-word;
 }
@@ -117,11 +120,11 @@ h1 {
   border-top: 1px solid var(--soft-rule);
 }
 .section-kicker { grid-column: 1 / 3; font-family: var(--mono); font-size: 10px; color: var(--accent); text-transform: uppercase; padding-top: 8px; }
-.section-body { grid-column: 3 / 9; }
+.section-body { grid-column: 3 / 9; min-width: 0; }
 .section-body h2 { margin-bottom: 18px; font-family: var(--display); font-size: clamp(30px, 3.8vw, 42px); line-height: 1.18; font-weight: 720; }
 .section-lede { margin-bottom: 14px; font-size: 19px; line-height: 1.62; color: var(--muted); }
 .section-body p { margin-bottom: 16px; font-family: var(--serif); font-size: 17px; line-height: 1.9; color: var(--reader-ink); overflow-wrap: anywhere; }
-.evidence-margin { grid-column: 9 / 11; display: grid; gap: 14px; align-content: start; }
+.evidence-margin { grid-column: 9 / 11; display: grid; gap: 14px; align-content: start; min-width: 0; }
 .evidence-note,
 .side-note {
   padding: 13px 0 14px 14px;
@@ -144,12 +147,15 @@ h1 {
 .point-list li { display: grid; grid-template-columns: 32px 1fr; gap: 10px; padding-top: 10px; border-top: 1px solid var(--soft-rule); }
 .point-list span { font-family: var(--mono); color: var(--accent); font-size: 10px; }
 .point-list p { margin: 0; font-size: 13px; line-height: 1.62; color: var(--muted); }
-.report-figure { background: color-mix(in srgb, var(--haze) 18%, transparent); }
-.report-figure figcaption { grid-column: 1 / 3; }
+.report-figure {
+  background: linear-gradient(180deg, color-mix(in srgb, var(--haze) 18%, transparent), color-mix(in srgb, var(--surface) 56%, transparent)), color-mix(in srgb, var(--paper) 72%, var(--surface));
+  box-shadow: inset 0 1px 0 var(--hairline), inset 0 -1px 0 color-mix(in srgb, var(--ink) 5%, transparent);
+}
+.report-figure figcaption { grid-column: 1 / 3; min-width: 0; }
 .report-figure figcaption span { font-family: var(--mono); font-size: 9px; color: var(--accent); text-transform: uppercase; }
-.report-figure figcaption strong { display: block; margin-top: 12px; font-size: 23px; line-height: 1.18; }
-.report-figure figcaption p { margin-top: 10px; font-size: 13px; line-height: 1.6; color: var(--muted); }
-.figure-body { grid-column: 3 / 11; }
+.report-figure figcaption strong { display: block; margin-top: 12px; font-size: clamp(18px, 1.7vw, 21px); line-height: 1.22; }
+.report-figure figcaption p { margin-top: 10px; font-size: 12px; line-height: 1.6; color: var(--muted); }
+.figure-body { grid-column: 3 / 11; min-width: 0; }
 .flow-diagram { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); border-top: 1px solid var(--soft-rule); border-bottom: 1px solid var(--soft-rule); }
 .flow-node { min-height: 118px; padding: 16px 14px; display: grid; align-content: space-between; border-right: 1px solid var(--soft-rule); background: color-mix(in srgb, var(--surface) 84%, transparent); }
 .flow-node:last-child { border-right: 0; }
@@ -157,13 +163,17 @@ h1 {
 .flow-node strong { font-size: 15px; line-height: 1.36; }
 .matrix-wrap {
   overflow-x: auto;
+  max-width: 100%;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+  scrollbar-gutter: stable;
   border-top: 2px solid color-mix(in srgb, var(--accent) 72%, var(--ink));
   border-bottom: 1px solid var(--hairline);
   background: color-mix(in srgb, var(--surface) 72%, transparent);
 }
-.matrix-wrap table { width: 100%; min-width: 680px; border-collapse: collapse; }
+.matrix-wrap table { width: 100%; min-width: 720px; border-collapse: collapse; }
 .matrix-wrap th, .matrix-wrap td { padding: 15px 18px; border-bottom: 1px solid var(--hairline); text-align: left; vertical-align: top; font-size: 13px; line-height: 1.65; color: color-mix(in srgb, var(--ink) 78%, var(--muted)); }
-.matrix-wrap thead th { font-family: var(--mono); font-size: 9px; line-height: 1.3; text-transform: uppercase; color: var(--accent); background: color-mix(in srgb, var(--haze) 18%, var(--surface)); }
+.matrix-wrap thead th { font-family: var(--sans); font-size: 14px; line-height: 1.48; font-weight: 680; text-transform: none; color: color-mix(in srgb, var(--accent) 72%, var(--ink)); background: transparent; }
 .matrix-wrap tbody th { width: 22%; font-size: 15px; line-height: 1.42; font-weight: 680; color: color-mix(in srgb, var(--ink) 94%, var(--accent)); }
 .matrix-wrap tr:last-child th, .matrix-wrap tr:last-child td { border-bottom: 0; }
 .closing { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; padding-top: 42px; padding-bottom: 52px; }
@@ -177,7 +187,7 @@ footer { width: min(var(--max), calc(100vw - 24px)); margin: 0 auto 28px; paddin
   .hero, .report-section, .report-figure, .closing { padding-left: 20px; padding-right: 20px; }
   .hero, .report-section, .report-figure, .closing, .hero-main { grid-template-columns: 1fr; }
   h1, .hero-deck, .section-kicker, .section-body, .evidence-margin, .report-figure figcaption, .figure-body { grid-column: 1 / -1; }
-  .hero-main, .hero-deck, .hero-findings, .section-body, .evidence-margin, .figure-body { width: 100%; max-width: calc(100vw - 40px); }
+  .hero-main, .hero-deck, .hero-findings, .section-body, .evidence-margin, .figure-body { width: 100%; max-width: none; }
   .hero { min-height: auto; }
   .hero-findings, .closing, .flow-diagram { grid-template-columns: 1fr; }
   .flow-node { border-right: 0; border-bottom: 1px solid var(--soft-rule); }
@@ -187,7 +197,7 @@ footer { width: min(var(--max), calc(100vw - 24px)); margin: 0 auto 28px; paddin
   footer { width: 100vw; padding-left: 18px; padding-right: 18px; }
 }
 @media (max-width: 430px) {
-  .hero-main, .hero-deck, .hero-findings, .section-body, .evidence-margin, .figure-body { max-width: 320px; }
+  .hero-main, .hero-deck, .hero-findings, .section-body, .evidence-margin, .figure-body { max-width: none; }
   h1 { font-size: 34px; line-height: 1.12; }
 }
   </style>
@@ -204,7 +214,7 @@ footer { width: min(var(--max), calc(100vw - 24px)); margin: 0 auto 28px; paddin
         <div class="hero-deck">
           <p class="subtitle">Iris 把散乱的分析、笔记和 AI 输出，整理成一页能被认真阅读的报告。</p>
           <p class="lead">很多 AI 输出不是没有信息，而是没有取舍：事实堆在一起，证据没有路径，语气也看不出哪些地方还需要保留疑问。Iris 先找出最值得被看见的结论，再把它放进有节奏、有证据、有余地的页面里。</p>
-          <p class="thesis"><span>主旨</span>好的 Iris 报告不是给模型输出换一层皮，而是让读者更快看见结论、证据和下一步。</p>
+          <p class="thesis"><span>主旨</span>好的 Iris 报告不是给模型输出换一层皮，而是让读者更快看见结论、证据和后续判断。</p>
         </div>
       </div>
       <div class="hero-findings">
@@ -300,7 +310,7 @@ footer { width: min(var(--max), calc(100vw - 24px)); margin: 0 auto 28px; paddin
         <ul><li>不要用套话填满版面。</li><li>不要把没有证据支撑的猜测写成定论。</li></ul>
       </div>
       <div class="closing-list">
-        <h3>下一步</h3>
+        <h3>建议处理</h3>
         <ul><li>直接写最终 HTML。</li><li>检查首屏、证据边栏和移动端阅读效果。</li></ul>
       </div>
     </section>

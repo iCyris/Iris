@@ -1,7 +1,7 @@
 {
   "name": "iris",
   "version": "0.1.0",
-  "description": "AI analysis report layer for polished editorial HTML artifacts.",
+  "description": "Editorial HTML reports for AI analysis and research notes.",
   "author": {
     "name": "Cyris"
   },
@@ -19,8 +19,8 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Iris",
-    "shortDescription": "Turn AI analysis into editorial reading reports.",
-    "longDescription": "Iris turns AI analysis, summaries, research notes, codebase readings, strategy judgments, and technical explanations into polished single-page HTML reports with premium editorial typography, key findings, evidence diagrams, assumptions, and next actions.",
+    "shortDescription": "Turn analysis into readable HTML reports.",
+    "longDescription": "Iris turns AI analysis, research notes, codebase readings, strategy judgments, and technical explanations into self-contained editorial HTML reports. Each report leads with a thesis, organizes findings around evidence, uses diagrams only when they clarify the argument, and closes with assumptions, open decisions, and next actions.",
     "developerName": "Cyris",
     "category": "Design",
     "capabilities": [
@@ -29,9 +29,9 @@
       "Generate"
     ],
     "defaultPrompt": [
-      "Use Iris to turn this AI analysis into a polished reading report.",
-      "Use Iris to render this codebase analysis as an editorial report.",
-      "Use Iris to turn these research notes into a readable evidence report."
+      "Use Iris to turn this analysis into an HTML report.",
+      "Use Iris to render this codebase reading as a report.",
+      "Use Iris to shape these research notes into evidence."
     ],
     "brandColor": "#6F80C7",
     "composerIcon": "./assets/logo/generated/iris-mark-white.png",

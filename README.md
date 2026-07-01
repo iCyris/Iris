@@ -10,9 +10,9 @@
   <strong>Turn AI analysis into editorial HTML reports.</strong>
 </p>
 
-Iris is a report layer for AI-assisted work. It takes analysis, research notes, codebase readings, product judgments, and technical explanations, then shapes them into a single self-contained HTML report.
+Iris turns AI analysis, research notes, codebase readings, product judgments, and technical explanations into self-contained HTML reports.
 
-It is not a document suite, landing page generator, slide template, or PDF workflow. Iris exists for one thing: turning serious AI output into a page someone can read, inspect, and act on.
+Each report leads with a thesis, organizes findings around evidence, and closes with assumptions, open decisions, and next actions.
 
 ## Examples
 
@@ -55,20 +55,44 @@ Markdown can be useful as a private scratchpad while thinking. It is not the fin
 | `skills/iris/templates/report.html` | Canonical template reference |
 | `examples/editorial-method.html` | Finished HTML example |
 | `examples/editorial-method-zh.html` | Finished Chinese HTML example |
+| `skills.sh.json` | Optional grouping metadata for the skills.sh repo page |
 
 ## Install
 
-Iris is maintained as a local Codex plugin project.
+Install Iris globally with the `skills` CLI:
 
 ```bash
-codex plugin add iris@personal
+npx -y skills add iCyris/Iris --skill iris -a '*' -g -y
 ```
 
-For tools that do not use plugin metadata, start with:
+This installs the `iris` skill from the public `iCyris/Iris` repository for all
+supported agents on your machine.
+
+Iris does not need an npm package for this install path. The `skills` CLI reads
+the GitHub repository and installs the `skills/iris` folder directly.
+
+Update Iris later with:
+
+```bash
+npx -y skills update iris -g -y
+```
+
+If you prefer to point directly at the skill folder, use the GitHub tree URL:
+
+```bash
+npx -y skills add https://github.com/iCyris/Iris/tree/main/skills/iris -a '*' -g -y
+```
+
+Flags:
+
+- `-a '*'` installs for every supported agent.
+- `-g` installs globally instead of only in the current project.
+- `-y` accepts the install prompts.
+
+The skill lives here:
 
 ```text
-AGENTS.md
-skills/iris/SKILL.md
+skills/iris
 ```
 
 ## Project Layout
@@ -88,8 +112,8 @@ Iris/
 ├── AGENTS.md
 ├── BRAND.md
 ├── CLAUDE.md
-├── LOGO_SPEC.md
-└── asset-manifest.json
+├── asset-manifest.json
+└── skills.sh.json
 ```
 
 ## License
