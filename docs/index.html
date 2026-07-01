@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Iris | Editorial HTML Reports</title>
   <meta name="description" content="Iris turns AI analysis, research notes, codebase readings, and product judgments into refined single-page HTML reports.">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="assets/favicon/favicon-32.png" sizes="32x32">
   <style>
 :root {
   --paper: #f4f2ed;
@@ -126,7 +128,46 @@ img { display: block; max-width: 100%; }
   gap: clamp(14px, 2vw, 24px);
 }
 
-.site-nav a { text-decoration: none; }
+.site-nav a {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  text-decoration: none;
+  transition: color .34s cubic-bezier(.16, 1, .3, 1), transform .34s cubic-bezier(.16, 1, .3, 1);
+}
+
+.site-nav a::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  right: 50%;
+  bottom: 2px;
+  height: 1px;
+  background: color-mix(in srgb, var(--accent) 62%, transparent);
+  opacity: 0;
+  transition:
+    left .38s cubic-bezier(.16, 1, .3, 1),
+    right .38s cubic-bezier(.16, 1, .3, 1),
+    opacity .3s cubic-bezier(.16, 1, .3, 1);
+}
+
+.site-nav a:hover,
+.site-nav a:focus-visible {
+  color: color-mix(in srgb, var(--ink) 88%, var(--accent));
+  transform: translateY(-1px);
+}
+
+.site-nav a:hover::after,
+.site-nav a:focus-visible::after {
+  left: 0;
+  right: 0;
+  opacity: .9;
+}
+
+.site-nav a:focus-visible {
+  outline: 0;
+}
 
 .hero {
   display: grid;
