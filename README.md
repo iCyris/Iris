@@ -77,6 +77,15 @@ Update Iris later with:
 npx -y skills update iris -g -y
 ```
 
+Remove Iris later with:
+
+```bash
+npx -y skills remove --global iris -y
+```
+
+The `skills remove` command removes installed skills by name. `--global` targets
+the global install scope used above, and `-y` skips the confirmation prompt.
+
 If you prefer to point directly at the skill folder, use the GitHub tree URL:
 
 ```bash
