@@ -42,9 +42,19 @@
       "role": "White logo mark for plugin surfaces."
     },
     {
-      "path": "examples/*.html",
+      "path": "docs/examples/*.html",
       "producer": "iris",
       "role": "Hand-authored final HTML report examples."
+    },
+    {
+      "path": "docs/index.html",
+      "producer": "iris",
+      "role": "GitHub Pages introduction page with routes to hand-authored report examples."
+    },
+    {
+      "path": "docs/CNAME",
+      "producer": "iris",
+      "role": "GitHub Pages custom domain configuration."
     },
     {
       "path": "assets/readme/*.png",

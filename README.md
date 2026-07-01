@@ -16,6 +16,12 @@ Each report leads with a thesis, organizes findings around evidence, and closes 
 
 ## Examples
 
+Browse the GitHub Pages entry page from `docs/index.html`, or open the
+finished reports directly:
+
+- `docs/examples/editorial-method.html`
+- `docs/examples/editorial-method-zh.html`
+
 <p>
   <strong>English</strong><br>
   <img src="assets/readme/example-en.png" alt="English Iris report example">
@@ -53,8 +59,9 @@ Markdown can be useful as a private scratchpad while thinking. It is not the fin
 | `skills/iris/references/content-method.md` | Content extraction and writing method |
 | `skills/iris/references/design-system.md` | Visual system and report quality rules |
 | `skills/iris/templates/report.html` | Canonical template reference |
-| `examples/editorial-method.html` | Finished HTML example |
-| `examples/editorial-method-zh.html` | Finished Chinese HTML example |
+| `docs/index.html` | GitHub Pages introduction page |
+| `docs/examples/editorial-method.html` | Finished HTML example |
+| `docs/examples/editorial-method-zh.html` | Finished Chinese HTML example |
 | `skills.sh.json` | Optional grouping metadata for the skills.sh repo page |
 
 ## Install
@@ -111,7 +118,10 @@ Iris/
 ├── .codex-plugin/
 ├── assets/logo/generated/
 ├── assets/readme/
-├── examples/
+├── docs/
+│   ├── assets/
+│   ├── examples/
+│   └── index.html
 ├── skills/iris/
 │   ├── SKILL.md
 │   ├── agents/

@@ -18,7 +18,7 @@ Iris is guided by one canonical report template: `skills/iris/templates/report.h
 - Template library: `skills/iris/templates/report.html`
 - Design guidance: `skills/iris/references/design-system.md`
 - Content method: `skills/iris/references/content-method.md`
-- HTML examples: `examples/*.html`
+- HTML examples: `docs/examples/*.html`
 - Logo assets: `assets/logo/generated/iris-mark-transparent.png`, `assets/logo/generated/iris-mark-white.png`
 - Codex plugin metadata: `.codex-plugin/plugin.json`
 - Claude Code guide: `CLAUDE.md`
@@ -54,7 +54,7 @@ Before reporting completion after project edits, check that `report.html` remain
 
 When changing the report template, visual system, or example content:
 
-1. Update both HTML examples: `examples/editorial-method.html` and `examples/editorial-method-zh.html`.
+1. Update both HTML examples: `docs/examples/editorial-method.html` and `docs/examples/editorial-method-zh.html`.
 2. Capture fresh desktop preview images for README:
    - `assets/readme/example-en.png`
    - `assets/readme/example-zh.png`
